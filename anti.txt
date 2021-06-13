@@ -2272,7 +2272,7 @@ while(!feof($file))
 }
 foreach ($count_array as $word => $number) {    
 }
-if ($number <= 10) {
+if ($number <= 5) {
 } else {
 $content = "❗Alert (Bot Found): ".$IP." This IP Visit Your Website ".$number." Times. [Action: Blocked ] \r\n";
 $token = file_get_contents("admin/tmp/token.txt");
